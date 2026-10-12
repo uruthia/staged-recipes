@@ -1,0 +1,54 @@
+schema_version: 1
+
+context:
+  version: "0.3.1"
+
+package:
+  name: tirex-2
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/t/tirex-2/tirex_2-${{ version }}.tar.gz
+  sha256: 53a7f36e922aea2c2ef4c934cead662c31420a0cef9913b7d38202ac1ca419a5
+
+build:
+  number: 0
+  skip: match(python, "<3.11")
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python >=3.11
+    - setuptools >=68
+    - pip
+  run:
+    - python >=3.11
+    - pytorch >=2.8.0
+    - if: match(python, ">=3.14")
+      then: pytorch >=2.10.0
+    - numpy >=2.1.3
+    - if: match(python, ">=3.14")
+      then: numpy >=2.3.3
+    - flashrnn >=1.0.8
+    - xlstm >=2.0.3,<2.1.dev0
+    - pyyaml >=6
+    - huggingface_hub >=0.35.3
+    - narwhals >=2.0
+
+tests:
+  - python:
+      imports:
+        - tirex2
+      pip_check: true
+
+about:
+  summary: TiRex-2 time series forecasting inference
+  license: Apache-2.0
+  license_file:
+    - LICENSE
+    - NOTICE
+  homepage: https://pypi.org/project/tirex-2/
+
+extra:
+  recipe-maintainers:
+    - AddYourGitHubIdHere
