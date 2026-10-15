@@ -47,8 +47,9 @@ about:
   license_file:
     - LICENSE
     - NOTICE
-  homepage: https://pypi.org/project/tirex-2/
+  homepage: https://github.com/NX-AI/tirex 
+  repository: https://github.com/NX-AI/tirex
 
 extra:
   recipe-maintainers:
-    - AddYourGitHubIdHere
+    - daidahao
